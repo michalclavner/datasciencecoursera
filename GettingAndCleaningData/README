@@ -1,0 +1,27 @@
+How the script "run_Analysis.R" works:
+
+1. the script reads in 3 files from 2 separate folders within the main folder "UCI_HAR_DataSet" which is located in a "data" folder within my working directory (.\data\UCI_HAR_DataSet)
+The 3 files being read are:
+X_*.txt 
+y_*.txt
+subject_*.txt
+( where the * denotes either "test" or "train")
+2. As soon as 1 set of files is loaded into R, the program merges it to 1 data set, where the test datasets were concatenated below the train datasets.
+3. variables names were assigned to the data sets. 
+   subject_* : SubjectID
+   Y_* : label ( numeric assignment from 1-6 for each activity)
+   X_*: data ( the data in each variable for each observation)
+4. 2 more files were loaded into R : activity labels ( which assigns       each numerical activity number with the name of the actual activity) and features ( which is the name of the 81 variables in the “X” data sets).
+5. rename variables: 
+ “labels” (Y_*) to “Activity Number”
+ “subject_data” (subject_*) to “SubjectID”
+ Each column of “data” (X_*) with the feature array
+6. Merging the data sets into one data set such that:
+Column 1- subject_ID
+Column 2- activity number 
+Columns 3:563 – the data set
+7. Assigning a variable to the column names within the combined set and looking for variables that include the strings: “mean”, “std” and the first 2 column name. This produces a variable that has the column numbers with those variables
+8. creating a subset with the columns found in step 7
+9. Creating a new activity array that has the activity name assigned to the activity number and replacing it within the subset
+9. renaming the column names within the subset to descriptive variable names
+10.  saving the subset as a data table “Tidy_Subset.txt”
