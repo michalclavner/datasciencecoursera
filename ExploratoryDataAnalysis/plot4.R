@@ -60,31 +60,3 @@ dev.off()
 
 
 
-# getting the weekdays for the day
-DAYoftheWeek <- weekdays(DTsubset$Date)
-# initializing the plot:
-plot(DTsubset$Time,DTsubset$Sub_metering_1,type='n',xlab="", ylab= "Energy sub metering")
-#adding the different variables
-lines(DTsubset$Time,DTsubset$Sub_metering_1, type="l", col="black",
-      xlab="", ylab="Energy sub metering")
-lines(DTsubset$Time,DTsubset$Sub_metering_2, type="l", col="red",
-      xlab="", ylab="Energy sub metering")
-lines(DTsubset$Time,DTsubset$Sub_metering_3, type="l", col="blue",
-      xlab="", ylab="Energy sub metering")
-#adding legends:
-legend("topright",col =c("black","red","blue"),
-       legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), lty=1)
-#saving the plot:
-dev.copy(png,file="plot3.png")
-dev.off()
-
-
-
-
-
-
-
-
-
-
-
